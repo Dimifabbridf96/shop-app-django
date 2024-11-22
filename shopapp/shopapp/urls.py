@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('clothes/', include('clothes.urls')),
-    path('shoes/', include('shoes.urls')),
+    path('shoes/', include('shoes.urls')), 
     path('', RedirectView.as_view(url='/', permanent=True)),
 ]
 
