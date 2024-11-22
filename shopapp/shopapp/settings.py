@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'shopapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 import dj_database_url
-DATABASES = {"default": dj_database_url.config(default="postgresql://postgres:postgres@localhost:5432/library")}
+DATABASES = {"default": dj_database_url.config(default="postgresql://shopapp_afxl_user:cXj8Oqsziq8s1tVS9RdjRoyYszUJvzrr@dpg-ct0d3grtq21c73b4bgeg-a.frankfurt-postgres.render.com/shopapp_afxl")}
 
 
 # Password validation
