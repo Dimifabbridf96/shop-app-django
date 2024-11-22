@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Shoes, Slider
 
-# Register your models here.
+admin.site.register(Shoes)
+admin.site.register(Slider)
