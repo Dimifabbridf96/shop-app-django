@@ -1,14 +1,6 @@
+{% extends 'base_generic.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoes Home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% block content %}
     {% for slider in sliders %}
     <div class="swiper {% if slider.id|divisibleby:2 %}left{% else %}right{% endif %}">
         <div class="swiper-wrapper">
@@ -21,7 +13,6 @@
         <div class="swiper-button-next"></div>
     </div>
     {% endfor %}
-    <!-- Rest of your content -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
