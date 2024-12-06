@@ -1,31 +1,54 @@
 {% extends 'base_generic.html' %}
 {% load static %}
 {% block content %}
-    {% for slider in sliders %}
-    <div class="swiper {% if slider.id|divisibleby:2 %}left{% else %}right{% endif %}">
+    <div class="swiper my-5 col-12">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="{{ slider.image.url }}" alt="{{ slider.title }}">
-            </div>
+            {% for slider in sliders %}
+                <div class="swiper-slide">
+                    <img src="{{ slider.image.url }}" alt="{{ slider.title }}">
+                    <h2>{{ slider.title }}</h2>
+                    <p>{{ slider.description }}</p>
+                </div>
+            {% endfor %}
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination right"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
-    {% endfor %}
+    
+    <div class="d-flex justify-content-around  ">
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
-</body>
-</html>
+    <div class="card m-5" style="width: 40rem;">
+        <img src="{% static 'assets/women_fashion.jpg' %}" class="card-img-top" alt="men fashion">
+        <div class="card-body">
+          <h5 class="card-title">Women fashion</h5>
+          <ul class="card-text">
+            <li>
+                <a href="shoes/" class="link-underline-opacity-0">Women's Shoes</a>
+            </li>
+            <li class="text-black">
+                <a href="#" class="link-secondary link-underline-opacity-0 ">Women's Clothing</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card m-5" style="width: 40rem;">
+        <img src="{% static 'assets/men_fashion.jpg' %}" class="card-img-top" alt="men fashion">
+        <div class="card-body">
+          <h5 class="card-title">Men fashion</h5>
+          <ul class="card-text">
+            <li>
+                <a href="#" class="link-underline-opacity-0 link-secondary">Men's Shoes</a>
+            </li>
+            <li>
+                <a href="#" class="link-underline-opacity-0 link-secondary">Men's Clothing</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+    </div>
+{% endblock %}

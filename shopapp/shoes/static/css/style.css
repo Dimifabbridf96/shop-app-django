@@ -1,16 +1,19 @@
-.left{
-    margin: 10px;
-}
-.right{
-    position: absolute;
-    right: 10px;
-}
 .swiper {
-    width: 50%;
+    width: 100%;
     height: 400px;
 }
 .swiper-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+}
+a{
+    color: black !important;
+}
+a.btn-primary{
+    color: white !important;
+}
+.card-img-top {
+    height: 700px; /* Set the desired height for the images */
+    object-fit: cover; /* Ensure the image scales proportionally */
 }

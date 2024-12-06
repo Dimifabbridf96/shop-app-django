@@ -10,7 +10,8 @@ class Shoes(models.Model):
     category = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     material = models.CharField(max_length=50)  # Added for shoe material
-    gender = models.CharField(max_length=10)  # Added for gender (e.g., Men, Women, Unisex)
+    gender = models.CharField(max_length=10) # Added for gender (e.g., Men, Women, Unisex)
+    image=models.ImageField(upload_to='shoes_images/', default='shoes_images/default.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -23,8 +24,6 @@ class Shoes(models.Model):
 class Slider(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='slider_images/')
-    url = models.URLField(blank=True)
-    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
