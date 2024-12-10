@@ -1,4 +1,4 @@
-// script.js
+// Add this CSS style to the script.js file
 document.addEventListener('DOMContentLoaded', function() {
     const swiperElements = document.querySelectorAll('.swiper');
 
@@ -13,5 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 prevEl: '.swiper-button-prev',
             },
         });
+    });
+});
+
+// Add this CSS style to the script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    const fadeOutElements = document.querySelectorAll('.fade-out');
+
+    fadeOutElements.forEach(function(element) {
+        element.style.opacity = '0';
+        element.style.transition = 'opacity 1s ease-in-out';
     });
 });

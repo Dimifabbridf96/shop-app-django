@@ -1,0 +1,150 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<!-- User Profile -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- User Profile Card -->
+            <div class="card">
+                <!-- User Profile Image -->
+                <div class="card-header text-center">
+                    {% if user.id != 10 %}
+                    <img src={{ user.image.url }} alt="User Profile Picture" class="img-thumbnail">
+                    {% endif %}
+                    <h4 class="mt-2">{{ user.username }}</h4>
+                    <p>{{ user.email }}</p>
+                </div>
+                <!-- User Profile Navigation -->
+<div class="card-body">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#inbox" data-toggle="tab">Inbox</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="#send-message" data-toggle="tab">Send Message</a>
+        </li>
+    </ul>
+</div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- Inbox and Send Message Tabs -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <!-- Inbox Tab -->
+                            <div class="tab-pane active" id="inbox">
+                                <form method="get">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="sender">Filter by Sender:</label>
+                                        <select class="form-control" id="sender" name="sender">
+                                            <option value="">All</option>
+                                            {% for user in all_users %}
+                                                <option value="{{ user.pk }}">{{ user.username }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-3">Filter</button>
+                                </form>
+                            {% if messages %}
+                                <ul class="list-group">
+                                    {% for message in messages %}
+                                        <li class="list-group-item">
+                                            <strong>From:</strong> {{ message.sender }}
+                                            <br>
+                                            <strong>Subject:</strong> {{ message.subject }}
+                                            <br>
+                                            <strong>
+                                                Message content:
+                                            </strong>
+                                            <p>{{ message.content }}</p>
+                                            <p><small>{{ message.timestamp }}</small></p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No messages found.</p>
+                            {% endif %}
+                        </div>
+                        <!-- Send Message Tab -->
+                        <div class="tab-pane" id="send-message">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="recipient">Recipient:</label>
+                                    <select class="form-control" id="recipient" name="recipient">
+                                        {% for user in all_users %}
+                                            <option value="{{ user.pk }}">{{ user.username }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject:</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Message:</label>
+                                    <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="{% url 'update_profile' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                   </form>
+                </div>
+            </div>
+            {% if user.id == 10 %}
+            <div class="card">
+                <div class="card-body">
+                    <h2>All Users</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in all_users %}
+                                <tr>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td><a href="{% url 'delete_account' user.id  %}">❌</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/script1.js' %}"></script>
+{% endblock %}

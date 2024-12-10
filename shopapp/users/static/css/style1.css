@@ -1,0 +1,29 @@
+
+#inbox {
+    /* Add padding to the inbox tab content */
+    padding: 20px;
+}
+
+#inbox .list-group-item {
+    /* Add some spacing between list items */
+    margin-bottom: 10px;
+    /* Add a border to list items */
+    border: 1px solid #ddd;
+    /* Add a background color to list items */
+    background-color: #f9f9f9;
+}
+
+#inbox .list-group-item:hover {
+    /* Change the background color of list items when hovered */
+    background-color: #f5f5f5;
+}
+
+#inbox .list-group-item strong {
+    /* Add some spacing after strong elements */
+    margin-right: 5px;
+}
+
+#inbox .list-group-item small {
+    /* Align timestamp to the right */
+    float: right;
+}

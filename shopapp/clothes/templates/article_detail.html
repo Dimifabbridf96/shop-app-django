@@ -1,0 +1,82 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="swiper my-5 col-12">
+            <div class="swiper-wrapper">
+                {% for image in article.image.all %}
+                    <div class="swiper-slide detail">
+                        <img src="{{ image.image.url }}" alt="{{ image.image.name }}">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination right"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        <div class="col-12 px-0">
+            <div class="card mb-5">
+                <div class="card-header text-center mt-5">
+                    <h3>Article Details</h3>
+                </div>
+                <div class="card-body d-flex justify-content-around flex-wrap text-center">
+                    <div class='col-12 mt-4'>
+                        <h1 class="card-title">{{ article.name }}</h1>
+                    </div>
+                    <div class="col-12 my-4">
+                        <h3 class="card-text">{{ article.description }}</h3>
+                    </div>
+
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Price:</h2>
+                            <h3 class="card-text">{{ article.price }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Size:</h2>
+                            <h3 class="card-text">{{ article.size }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Color:</h2>
+                            <h3 class="card-text">{{ article.color }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Brand:</h2>
+                            <h3 class="card-text">{{ article.brand }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Category:</h2>
+                            <h3 class="card-text">{{ article.category }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Material:</h2>
+                            <h3 class="card-text">{{ article.material }}</h3>
+                        </div>
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex flex-column">
+                            <h2 class="card-subtitle mb-2 text-muted">Gender:</h2>
+                            <h3 class="card-text">{{ article.gender }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center mb-5">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

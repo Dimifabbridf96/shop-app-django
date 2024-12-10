@@ -24,13 +24,12 @@
           <h5 class="card-title">Women fashion</h5>
           <ul class="card-text">
             <li>
-                <a href="shoes/" class="link-underline-opacity-0">Women's Shoes</a>
+                <a href="{% url 'shoes' %}?gender=Women" class="link-underline-opacity-0">Women's Shoes</a>
             </li>
-            <li class="text-black">
-                <a href="#" class="link-secondary link-underline-opacity-0 ">Women's Clothing</a>
+            <li>
+                <a href="{% url 'clothes' %}?gender=Women" class="link-secondary link-underline-opacity-0 ">Women's Clothing</a>
             </li>
           </ul>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
 
@@ -40,13 +39,12 @@
           <h5 class="card-title">Men fashion</h5>
           <ul class="card-text">
             <li>
-                <a href="#" class="link-underline-opacity-0 link-secondary">Men's Shoes</a>
+                <a href="{% url 'shoes' %}?gender=Men" class="link-underline-opacity-0 link-secondary">Men's Shoes</a>
             </li>
             <li>
-                <a href="#" class="link-underline-opacity-0 link-secondary">Men's Clothing</a>
+                <a href="{% url 'clothes' %}?gender=Men" class="link-underline-opacity-0 link-secondary">Men's Clothing</a>
             </li>
           </ul>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
 
